@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<overlay id="iKnow" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <statusbar id="status-bar">
+  <statusbarpanel id="ik-panel" label="iKnow ready!"  />
+ </statusbar>
+</overlay>

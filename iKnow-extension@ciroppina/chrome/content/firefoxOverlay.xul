@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://iknow/locale/iknowsidebar.dtd">
+<overlay id="emptySidebarOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <menubar id="main-menubar">
+  <menu id="action-menu" label="&iknowmenu.menu.label;">
+    <menupopup id="action-popup">
+      <menuitem key="key_openiKnowSidebar" 
+	            observes="viewiKnowSidebar" />
+    </menupopup>
+  </menu>
+  </menubar>
+  
+  <keyset id="mainKeyset">
+    <key id="key_openiKnowSidebar" command="viewiKnowSidebar"
+         key="&openiKnowSidebar.commandkey;" 
+         modifiers="&openiKnowSidebar.modifierskey;" />
+  </keyset>
+
+  <broadcasterset id="mainBroadcasterSet"> 
+    <broadcaster id="viewiKnowSidebar"
+                 label="&iknowmenu.menuitem.label;"
+                 autoCheck="false"
+                 type="checkbox"
+                 group="sidebar"
+                 sidebarurl="chrome://iknow/content/iknowsidebar.xul"
+                 sidebartitle="&iknowsidebar.title;"
+                 oncommand="toggleSidebar('viewiKnowSidebar');" />
+  </broadcasterset>
+</overlay>

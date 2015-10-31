@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="chrome://browser/skin/browser.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://iknow/skin/iknowsidebar.css" type="text/css" ?>
+
+<!DOCTYPE page SYSTEM "chrome://iknow/locale/iknowsidebar.dtd">
+
+<page id="sbiKnowSidebar" title="&iknowsidebar.title;" style="color:#0077ff;"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+  <script type="application/x-javascript" src="chrome://iknow/content/iknowsidebar.js"/>
+  
+  <vbox id="iknowvbox" flex="1" style="overflow:auto;">
+    <label value="&iknowsidebar.dretitle;"/>
+    <textbox id="dretitle" placeholder="Trascinare o Inserire" multiline="false" style="font-size:12px;"/>
+    <separator orient="vertical"/>
+    <label value="&iknowsidebar.dredate;"/>
+    <textbox id="dredate" placeholder="(es: 01/01/1970)" style="font-size:12px;" />
+    <separator orient="vertical"/>
+    <label value="&iknowsidebar.autn.term;"/>
+    <textbox id="terms" placeholder="term1,term2,...concept" multiline="true" rows="2" style="font-size:12px;" />
+    <separator orient="vertical"/>
+    <label value="&iknowsidebar.drecontent;"/>
+    <textbox id="drecontent" placeholder="Trascinare o Inserire QUI..." multiline="true" rows="2" style="font-size:12px;" />
+    <separator orient="vertical"/>
+    <label value="&iknowsidebar.drereference;" />
+    <textbox id="drereference"  placeholder="una URL" style="font-size:12px;" />
+    <separator orient="vertical"/>
+    <p><label value="&iknowsidebar.drefields;" />
+		<button class="dangerous" label="&iknowsidebar.resetButton;" oncommand="removeAllDREFields();"/>
+    	<button label="&iknowsidebar.addButton;" oncommand="dreAddField();"/>
+    </p>
+    <menulist id="drefields" rows="1" editable="true">
+	<menupopup>
+		<listitem label=" "/>
+   		<menuitem  label="TITOLO" value="TITOLO" />
+   		<menuitem  label="DRETITLE" value="DRETITLE" />
+   		<menuitem  label="MASSIMA" value="MASSIMA" />
+   		<menuitem  label="EXS2_MASSIMA" value="EXS2_MASSIMA" />
+   		<menuitem  label="TAG.ESITO.RAGIONI" value="TAG.ESITO.RAGIONI" />
+   		<menuitem  label="EXS2_ESITO" value="EXS2_ESITO" />
+   		<menuitem  label="TAG.ESITO" value="TAG.ESITO" />
+   		<menuitem  label="EXS2_CATEGORY" value="EXS2_CATEGORY" />
+   		<menuitem  label="EXS2_FONTE" value="EXS2_FONTE" />
+   		<menuitem  label="TAG.FONTE" value="TAG.FONTE" />
+   		<menuitem  label="TAG.rif_legge" value="TAG.rif_legge" />
+   		<menuitem  label="EXS2_LOCALITA" value="EXS2_LOCALITA" />
+   		<menuitem  label="EXS2_REGIONE" value="EXS2_REGIONE" />
+	</menupopup>
+ 	</menulist> <textbox id="drefield" multiline="true" rows="2" style="font-size:12px;" 
+		placeholder="inserire il valore del TAG"/>
+    <separator orient="vertical"/>
+	<p><label value="&iknowsidebar.dredatabase;" /></p>
+    <menulist id="dredatabases" rows="1" editable="true">
+	<menupopup>
+		<menuitem label=" " />
+		<menuitem  label="Tributi" value="Tributi" />
+		<menuitem  label="Articoli Tributarie" value="Articoli_Tributarie" />
+   		<menuitem  label="KB_Cassazione_Tributi" value="Cassazione_Tributi" />
+   		<menuitem  label="News" value="News" />		
+	</menupopup>
+ 	</menulist>
+    <p><button label="&iknowsidebar.saveButton;" oncommand="dreAddData();"/></p>
+  </vbox>
+</page>

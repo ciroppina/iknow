@@ -1,0 +1,4 @@
+content     iKnow    chrome/content/
+locale	    iKnow    it-IT	chrome/locale/it-IT/
+overlay chrome://browser/content/browser.xul chrome://iknow/content/iKnow.xul
+overlay chrome://browser/content/browser.xul chrome://iknow/content/firefoxOverlay.xul
