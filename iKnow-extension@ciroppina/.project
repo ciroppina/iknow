@@ -3,6 +3,7 @@
 	<name>iKnow-extension@ciroppina</name>
 	<comment></comment>
 	<projects>
+		<project>iKnow-extension@ciroppina</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
