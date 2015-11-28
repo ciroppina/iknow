@@ -1,5 +1,7 @@
-<!ENTITY iknowsidebar.title "iKnow, build your own knowledge! - server: 95.110.198.219">
-<!ENTITY iknowsidebar.label "iKnow, build your own knowledge! - server: 95.110.198.219">
+<!ENTITY iknowsidebar.title "iKnow, build your own knowledge! ">
+<!ENTITY iknowsidebar.label "iKnow, build your own knowledge! ">
+
+<!ENTITY iknowsidebar.hostLabel "IP o Nome del IDOL Server:">
 <!ENTITY iknowsidebar.dretitle "Titolo del documento:">
 <!ENTITY iknowsidebar.dredate "Data del documento:">
 <!ENTITY iknowsidebar.autn.term "Sommario:">

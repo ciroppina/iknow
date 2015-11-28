@@ -3,7 +3,7 @@ function dreAddData() {
 
 var req = new XMLHttpRequest();
 	dreadddata = 
- 'http://95.110.198.219:9001/DREADDDATA? HTTP/1.0\n'
+ 'http://' + document.getElementById("host").value+ ':9001/DREADDDATA? HTTP/1.0\n'
 +'Content-Length: 10000\n\n'
 +'#DREREFERENCE '+ document.getElementById("drereference").value+'\n'
 +'#DREFIELD SUMMARY="' + document.getElementById("terms").value+ '"\n'
@@ -18,7 +18,7 @@ var req = new XMLHttpRequest();
 +'#DREENDDATANOOP\n\n';
    
     window.alert(dreadddata);
-   req.open('POST', 'http://95.110.198.219:9001/DREADDDATA?', false);
+   req.open('POST', 'http://' + document.getElementById("host").value+ ':9001/DREADDDATA?', false);
 	//debug: window.alert('open passed');
    req.send(dreadddata);
 	//debug: window.alert('send passed');

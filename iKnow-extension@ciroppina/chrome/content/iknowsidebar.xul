@@ -11,7 +11,9 @@
   <script type="application/x-javascript" src="chrome://iknow/content/iknowsidebar.js"/>
   
   <vbox id="iknowvbox" flex="1" style="overflow:auto;">
-    <label value="&iknowsidebar.dretitle;"/>
+	<label value="&iknowsidebar.hostLabel;"/>
+    <textbox id="host" placeholder="localhost" multiline="false" style="font-size:12px;"/>
+	<label value="&iknowsidebar.dretitle;"/>
     <textbox id="dretitle" placeholder="Trascinare o Inserire" multiline="false" style="font-size:12px;"/>
     <separator orient="vertical"/>
     <label value="&iknowsidebar.dredate;"/>
