@@ -1,0 +1,5 @@
+http://95.110.198.219:19000/Action=Query&Text=&DatabaseMatch=FATTURE&Combine=Simple&MinDate=&MaxDate=&FieldText=RANGE{13/06/1967,.}:EXS2_DATEIN_FATTURA&AnyLanguage=true&SecurityInfo=&Start=1&MaxResults=100&Summary=Context&Characters=250&Predict=false&Sort=relevance&Print=fields&PrintFields=EXS2_DATEIN_FATTURA summary&TotalResults=true&XMLMeta=true&Highlight=SummaryTerms&StartTag=<HavenSearch-QueryText-Placeholder>&EndTag=</HavenSearch-QueryText-Placeholder>&Blacklist=ISO_BLACKLIST&ExpandQuery=true&SpellCheck=true
+
+http://95.110.198.219:19000/Action=Query&Text=*&AnyLanguage=true&Predict=false&Print=NoResults&TotalResults=true
+
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08)

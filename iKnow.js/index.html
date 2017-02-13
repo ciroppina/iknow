@@ -1,0 +1,300 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<script src="./scripts/jquery-3.1.1.js"></script>
+  
+	<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" ></link>
+	<title>iKnow</title>
+
+<style>
+.meh {
+	font-weight: 400;
+	font-size: 1.5em;
+	padding: 0 1.5em 0 1.5em;
+	background-color: #8B099B;
+	color: white;
+	border-radius: 0.1em;
+}
+.tdBtn {
+	width: 15%;
+}
+.delBtn {
+	border: medium none; 
+	padding: 4px; 
+	margin-left: 2px;
+	left: 0px;
+	width: 98%;
+	box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.50);
+	font-family: helvetica,sans-serif;
+}
+.inp {
+	border: medium none; 
+	padding: 5px; 
+	margin: 5px;
+	left: 0px;
+	width: 95%;
+	box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.50);
+	font-family: helvetica,sans-serif;
+}
+.text {
+	border: medium none; 
+	padding: 15px; 
+	margin: 5px; 
+	width: 95%; 
+	background: transparent repeat scroll 0% 0%;
+	left: 0px;
+	box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.50);
+	font-family: helvetica,sans-serif;
+}
+.labels {
+	padding: 5px; 
+	margin: 5px;
+	width: 98%;
+	background: transparent repeat scroll 0% 0%;
+	left: 0px;
+	font-family: helvetica,sans-serif;
+	font-weight: 500;
+	color: #8F8F88;
+}
+</style>
+</head>
+
+<body style="font-family: helvetica,sans-serif;">
+<h3>iKnow - an IDOL Server indexing client</h3>
+
+<section id="fixed-fields">
+<input type="text"
+	id="drereference" name="drereference" 
+	maxlength="2048" autocomplete="on" 
+	title="insert URL" 
+	placeholder="insert the URL of the content, for DREREFERENCE" 
+	class="text" dir="ltr" spellcheck="true" />
+
+<input type="text"
+	id="dretitle" name="dretitle" 
+	maxlength="2048" autocomplete="on" 
+	title="insert title" 
+	placeholder="insert the Title of the content, for DRETITLE" 
+	class="text" dir="ltr" spellcheck="true" />
+
+<textarea id="drecontent" name="drecontent" 
+	rows="4" 
+	title="insert content here" 
+	placeholder="insert the Content, for DRECONTENT" 
+	class="text" style="font-size: 0.8em;"
+	dir="ltr" spellcheck="true" ></textarea>
+
+<input type="date"
+	id="dredate" name="dredate" 
+	maxlength="10" autocomplete="on" 
+	title="insert a date" 
+	placeholder="yyyy-MM-dd (DREDATE)" 
+	class="text" dir="ltr" spellcheck="true" />
+</section>
+
+<script type="text/javascript">
+    function toggleVisibility() {
+		display = $(".section").css('display') === 'none' ? true : false;
+		if ( display === true ) {
+		  $( "#custom-fields" ).show();
+		} else if ( display === false ) {
+		  $( "#custom-fields" ).hide();
+		}
+    }
+</script>
+<style>.section { display :none; }</style>
+<div style="align-self: center; text-align: center;">
+	<h4 style="margin-top: 15px; margin-bottom: 0px;">
+		<img id="clickme" src="./images/toggler.png"
+		onclick="toggleVisibility();" 
+		style="vertical-align: text-bottom;" /> 
+		Custom Fields
+	</h4>
+</div>
+<section id="custom-fields" class="section" style="background-color: rgb(255, 255, 155);">
+
+<input type="text"
+	id="drefield" name="drefield" 
+	maxlength="2048" autocomplete="off" 
+	title="#DREFIELD NAME" 
+	placeholder="* insert the #DREFIELD NAME" 
+	class="text" dir="ltr" spellcheck="true" />
+<input type="text"
+	id="drevalue" name="drevalue"
+	maxlength="2048" autocomplete="off" 
+	title="#DREFIELD VALUE" 
+	placeholder="* insert the #DREFIELD value" 
+	class="text" dir="ltr" spellcheck="true" />
+<input type="button"
+	id="addvalue" name="addvalue"
+	value="ADD FIELD"
+	onclick="javascript:addField();"
+	style="auto; background-color: #DADAD0;
+		   margin: 15px; padding: 15px;" />
+
+<h4 class="labels">List of added fields:</h4>
+<table id="list" name="list" style="width: 98%">
+</table>
+</section>
+
+<script type="text/javascript">
+//$( document ).ready(
+function addField() {
+	var drefield = document.getElementById('drefield').value;
+	var drevalue = document.getElementById('drevalue').value;
+	if (drefield==null || drefield=="" || drevalue==null || drevalue=="")
+		alert ("Please fill required fields: #DREFIELD "+drefield+"=\""+drevalue+"\"");
+	else
+		listRow = "#DREFIELD EXS2_"+drefield+"=\""+drevalue+"\"\n";
+	
+	var table = document.getElementById('list');
+	var tr = document.createElement('tr');   
+	var td1 = document.createElement('td');
+	td1.className = "tdBtn";
+	var inp = document.createElement('input');
+	inp.className = "inp";
+	var td2 = document.createElement('td');
+	td2.className = "tdField";
+	var text1 = document.createTextNode(listRow);
+	inp.value = listRow;
+	var delBtn = document.createElement('button');
+	var btnValue = document.createTextNode("delete this field");
+	delBtn.appendChild(btnValue);
+	delBtn.className = "delBtn";
+	
+	inp.appendChild(text1);
+	td1.appendChild(delBtn);
+	td2.appendChild(inp);
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	table.appendChild(tr);
+}
+	//document.body.appendChild(table);
+//});
+
+$('#list').on('click', '.delBtn', function(){
+    $(this).closest ('tr').remove ();
+});
+</script>
+
+<section id="final-form" style="display: block;">
+<div style="align-self: center; text-align: left; margin-top: 35px; margin-bottom: 0px;">
+	<h4> Indexing Form</h4>
+</div>
+
+<input type="text"
+	id="host" name="host" 
+	maxlength="2048" autocomplete="off" 
+	title="indexing host" 
+	placeholder="* insert the IDOL IP of DNSName" 
+	class="text" dir="ltr" spellcheck="true" />
+<input type="text"
+	id="port" name="port"
+	maxlength="2048" autocomplete="off" 
+	title="indexing port" 
+	placeholder="* insert the IDOL http/s index port number" 
+	class="text" dir="ltr" spellcheck="true" />
+<input type="text"
+	id="qport" name="qport"
+	maxlength="2048" autocomplete="off" 
+	title="query port" 
+	placeholder="to update the KBs List insert the IDOL http/s query port" 
+	style="background-color: rgb(255, 255, 155);"
+	class="text" dir="ltr" spellcheck="true" />
+
+<h4 class="labels">List of available IDOL Knowledge Bases:
+	<button id="update" value="update KBs">update this list</button>
+</h4>
+<select id="kbs" name="kbs" class="text">
+	<option value="">Select one KB</option>
+</select> 
+
+<h4 style="width: 98%;">
+ INDEX by pressing this button: <span class="meh" id="meh">meh! indicizza! </span>
+</h4>
+</section>
+<script type="text/javascript">
+$('#update').click( function(){
+    host = document.getElementById("host").value,
+	port = document.getElementById("qport").value;
+	if (host==null || host=="" || port==null || port=="") {
+		alert ("Please fill two fields: HOST IP, and QUERY PORT");
+		return;
+	}
+	var req = new XMLHttpRequest();
+	url = "http://"+ document.getElementById("host").value
+				   + ":"
+				   + document.getElementById("qport").value
+				   + "/action=Query&Text=*&AnyLanguage=true"
+				   + "&Predict=false&Print=NoResults&TotalResults=true";
+	req.open('POST', url, false); //false makes the request synchronous
+	req.send(null);
+	if (req.status != 200) {
+		alert ('a connection problem occurred, http status: ' + req.status);
+		return;
+	}
+	xml = req.responseXML.documentElement;
+	//xml = (new DOMParser()).parseFromString(req.responseXML, 'text/xml');
+	var kbsArray = xml.getElementsByTagNameNS //xmlnsURI, tagName
+		("http://schemas.autonomy.com/aci/", "database");
+	
+	$('#kbs').empty();
+	for (i = 0; i < kbsArray.length; i++) { 
+		var e = kbsArray[i]; //.nodeValue;
+		txt = e.getAttribute("name");
+		console.log(txt);
+		var option = document.createElement("option");
+		option.text = txt;
+		option.value = txt;
+		document.getElementById("kbs").add(option);
+	}
+});
+
+$('#meh').click( function(){
+	var drereference = "#DREREFERENCE " + $('#drereference').val() +"\n";
+	var dretitle = "#DRETITLE " + $('#dretitle').val() +"\n";
+	var dredate = "#DREDATE " + $('#dredate').val() +"\n";
+	var drecontent = "#DRECONTENT \n" + $('#drecontent').val() +"\n";
+	var cells = $("table#list tr td.tdField"); //:nth-child(2), the 2nd clmn
+	var drefields = "";
+	for (i = 0; i < cells.length; i++) {
+		drefields += cells[i].textContent;
+	}
+	var dredbname = "#DREDBNAME " + $('#kbs :selected').text() + "\n";
+	
+	var host = $('#host').val();
+	var port = $('#port').val();
+	var dreadddata = 
+		drereference + dretitle + dredate + drefields + drecontent + dredbname
+		+'#DREENDDOC\n'
+		+'#DREENDDATANOOP\n\n';;
+	//debug alert( dreadddata );
+	
+	//ajax sync indexing:
+	var req = new XMLHttpRequest();
+	var url = "http://"
+		+ host
+		+ ":"
+		+ port
+		+ "/DREADDDATA? HTTP/1.0\nContent-Length: 10000\n\n";
+	req.open('POST', url, false); //false means synch request
+	try {
+		req.send(dreadddata);
+	} catch(exception) {
+		alert( 'a connection error occurred, retry later!' );
+	}
+	//debug: window.alert('send passed');
+	if(req.status == 200)  alert('content indexed with code: '+req.responseText);
+	if(req.status != 200)  alert('problems occurred! ask iKnow staff');
+	dreadddata = "";
+});
+</script>
+
+<section id="footer" style="height: 50px;">
+</section>
+</body>
+</html> 
