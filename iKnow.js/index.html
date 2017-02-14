@@ -283,13 +283,14 @@ $('#meh').click( function(){
 		+ "/DREADDDATA? HTTP/1.0\nContent-Length: 10000\n\n";
 	req.open('POST', url, false); //false means synch request
 	try {
-		req.send(dreadddata);
+		req.send(dreadddata);		
+		if(req.status == 200)  alert('content indexed with code: '+req.responseText);
+		if(req.status != 200)  alert('problems occurred! ask iKnow staff');
 	} catch(exception) {
 		alert( 'a connection error occurred, retry later!' );
 	}
 	//debug: window.alert('send passed');
-	if(req.status == 200)  alert('content indexed with code: '+req.responseText);
-	if(req.status != 200)  alert('problems occurred! ask iKnow staff');
+	
 	dreadddata = "";
 });
 </script>
