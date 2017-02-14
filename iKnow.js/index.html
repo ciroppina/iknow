@@ -64,8 +64,11 @@
 </head>
 
 <body style="font-family: helvetica,sans-serif;">
-<h3>iKnow - an IDOL Server indexing client</h3>
-
+<h3>iKnow - an IDOL Server indexing client
+<br/><span style="font-size: 0.7em;">[works better with Firefox 
+	<a href="https://addons.mozilla.org/it/firefox/addon/tile-tabs/" target="_blank"
+	>TileTabs</a> plugin]</span>
+</h3>
 <section id="fixed-fields">
 <input type="text"
 	id="drereference" name="drereference" 
@@ -109,10 +112,10 @@
 <style>.section { display :none; }</style>
 <div style="align-self: center; text-align: center;">
 	<h4 style="margin-top: 15px; margin-bottom: 0px;">
-		<img id="clickme" src="./images/toggler.png"
+		show / hide <img id="clickme" src="./images/toggler.png"
 		onclick="toggleVisibility();" 
 		style="vertical-align: text-bottom;" /> 
-		Custom Fields
+		custom #DREFIELDs
 	</h4>
 </div>
 <section id="custom-fields" class="section" style="background-color: rgb(255, 255, 155);">
@@ -134,7 +137,7 @@
 	value="ADD FIELD"
 	onclick="javascript:addField();"
 	style="auto; background-color: #DADAD0;
-		   margin: 15px; padding: 15px;" />
+		   margin: 5px; padding: 0 15px 0 15px;" />
 
 <h4 class="labels">List of added fields:</h4>
 <table id="list" name="list" style="width: 98%">
@@ -182,7 +185,7 @@ $('#list').on('click', '.delBtn', function(){
 </script>
 
 <section id="final-form" style="display: block;">
-<div style="align-self: center; text-align: left; margin-top: 35px; margin-bottom: 0px;">
+<div style="align-self: center; text-align: left; margin-top: 15px; margin-bottom: 0px;">
 	<h4> Indexing Form</h4>
 </div>
 
@@ -190,8 +193,9 @@ $('#list').on('click', '.delBtn', function(){
 	id="host" name="host" 
 	maxlength="2048" autocomplete="off" 
 	title="indexing host" 
-	placeholder="* insert the IDOL IP of DNSName" 
-	class="text" dir="ltr" spellcheck="true" />
+	placeholder="* insert the IDOL IP address of DNSName" 
+	class="text" style="margin-top: 0px; padding-top: 0px;"
+	dir="ltr" spellcheck="true" />
 <input type="text"
 	id="port" name="port"
 	maxlength="2048" autocomplete="off" 
@@ -207,7 +211,9 @@ $('#list').on('click', '.delBtn', function(){
 	class="text" dir="ltr" spellcheck="true" />
 
 <h4 class="labels">List of available IDOL Knowledge Bases:
-	<button id="update" value="update KBs">update this list</button>
+	<button id="update" value="update KBs"
+		style="margin: 5px; padding: 0 15px 0 15px;"
+	>update the list</button>
 </h4>
 <select id="kbs" name="kbs" class="text">
 	<option value="">Select one KB</option>
@@ -222,7 +228,7 @@ $('#update').click( function(){
     host = document.getElementById("host").value,
 	port = document.getElementById("qport").value;
 	if (host==null || host=="" || port==null || port=="") {
-		alert ("Please fill two fields: HOST IP, and QUERY PORT");
+		alert ("Please fill two fields: IDOL IP, and QUERY PORT");
 		return;
 	}
 	var req = new XMLHttpRequest();
@@ -268,6 +274,9 @@ $('#meh').click( function(){
 	
 	var host = $('#host').val();
 	var port = $('#port').val();
+	if(host=="" || host==null || port=="" || port==null)
+		alert('ehi! fill-in IDOL IP address and index Port number');
+	
 	var dreadddata = 
 		drereference + dretitle + dredate + drefields + drecontent + dredbname
 		+'#DREENDDOC\n'
