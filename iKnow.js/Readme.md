@@ -16,6 +16,7 @@ You can specify:
 and all the usual/common IDOL IDX standard fields.
 Moreover, You can add as many #DREFIELDS as You need,
 by using the "show/hide custom #DREFIELDs" panel
+
 NOTICE that all custom #DREFIELDS names are prefixed
 with "EXS2_" in order to be easily added to:
 - ProntFields
@@ -24,6 +25,7 @@ with "EXS2_" in order to be easily added to:
 - ParametricFields
 - and so on...
 in the IDOL Server config-file, fields' properties section
+
 Example: */EXS2_*
 
 A "meh, indicizza!" successful click would return the standard
