@@ -19,7 +19,7 @@ by using the "show/hide custom #DREFIELDs" panel
 
 NOTICE that all custom #DREFIELDS names are prefixed
 with "EXS2_" in order to be easily added to:
-- ProntFields
+- PrintFields
 - IndexFields
 - SourceFields
 - ParametricFields
