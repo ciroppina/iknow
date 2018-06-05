@@ -213,11 +213,12 @@ $('#list').on('click', '.delBtn', function(){
 <h4 class="labels">List of available IDOL Knowledge Bases:
 	<button id="update" value="update KBs"
 		style="margin: 5px; padding: 0 15px 0 15px;"
-	>update the list</button>
+	>update the KBs datalist</button>
 </h4>
-<select id="kbs" name="kbs" class="text">
+<input type="text" list="kbs" id="kb" class="text" />
+<datalist id="kbs" name="kbs" class="text">
 	<option value="">Select one KB</option>
-</select> 
+</datalist> 
 
 <h4 style="width: 98%;">
  INDEX by pressing this button: <span class="meh" id="meh">ora, indicizza! </span>
@@ -254,9 +255,9 @@ $('#update').click( function(){
 		txt = e.getAttribute("name");
 		console.log(txt);
 		var option = document.createElement("option");
-		option.text = txt;
+		//option.text = txt;
 		option.value = txt;
-		document.getElementById("kbs").add(option);
+		document.getElementById("kbs").appendChild(option);
 	}
 });
 
@@ -270,7 +271,8 @@ $('#meh').click( function(){
 	for (i = 0; i < cells.length; i++) {
 		drefields += cells[i].textContent;
 	}
-	var dredbname = "#DREDBNAME " + $('#kbs :selected').text() + "\n";
+	//debug: alert('[' +$('#kb').val() +']');
+	var dredbname = "#DREDBNAME " + $('#kb').val() + "\n";
 	
 	var host = $('#host').val();
 	var port = $('#port').val();
@@ -289,7 +291,7 @@ $('#meh').click( function(){
 		+ host
 		+ ":"
 		+ port
-		+ "/DREADDDATA? HTTP/1.0\nContent-Length: 10000\n\n";
+		+ "/DREADDDATA?CreateDatabase=true HTTP/1.0\nContent-Length: 10000\n\n";
 	req.open('POST', url, false); //false means synch request
 	try {
 		req.send(dreadddata);		
